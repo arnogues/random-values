@@ -1,9 +1,12 @@
 {
   "name": "random-values",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Generate random data from array and manager random data by ratios",
   "homepage": "https://github.com/arnogues/random-values",
-  "repository": "arnogues/random-values",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arnogues/random-values"
+  },
   "bugs": "https://github.com/arnogues/random-values/issues",
   "author": {
     "name": "arnogues",
@@ -19,10 +22,6 @@
     "array",
     "datas"
   ],
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/arnogues/random-values"
-  },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.0.0",
