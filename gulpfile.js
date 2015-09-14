@@ -7,6 +7,12 @@ var istanbul = require('gulp-istanbul');
 var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
 
+var paths = {
+  scripts: ['lib/*.js', 'lib/**/*.js'],
+  test: ['test/*.js', 'test/**/*.js']
+};
+
+
 gulp.task('static', function () {
   return gulp.src('**/*.js')
     .pipe(excludeGitignore())
@@ -33,14 +39,22 @@ gulp.task('test', ['pre-test'], function (cb) {
   gulp.src('test/**/*.js')
     .pipe(plumber())
     .pipe(mocha({reporter: 'spec'}))
-    .on('error', function (err) {
+   /* .on('error', function (err) {
       mochaErr = err;
-    })
-    .pipe(istanbul.writeReports())
+    })*/
+    //.pipe(istanbul.writeReports())
     .on('end', function () {
       cb(mochaErr);
     });
 });
 
+// Rerun the task when a file changes
+gulp.task('watch', function () {
+  gulp.watch(paths.scripts, ['default']);
+  gulp.watch(paths.test, ['default']);
+});
+
+
 gulp.task('prepublish', ['nsp']);
 gulp.task('default', ['static', 'test']);
+gulp.task('dev', ['static', 'test', 'watch']);
