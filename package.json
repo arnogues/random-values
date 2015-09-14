@@ -4,6 +4,7 @@
   "description": "Generate random data from array and manager random data by ratios",
   "homepage": "https://github.com/arnogues/random-values",
   "repository": "arnogues/random-values",
+  "bugs": "https://github.com/arnogues/random-values/issues",
   "author": {
     "name": "arnogues",
     "email": "",
@@ -18,6 +19,10 @@
     "array",
     "datas"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/arnogues/random-values"
+  },
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-eslint": "^1.0.0",
@@ -29,7 +34,7 @@
   },
   "scripts": {
     "prepublish": "gulp prepublish",
-    "test": "gulp"
+    "test": "gulp test"
   },
   "license": "MIT"
 }

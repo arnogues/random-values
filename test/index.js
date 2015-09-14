@@ -34,6 +34,19 @@ describe('random-values.random()', function () {
     }
     assert(ok, 'we expect to have 1, i value = ' + i);
   });
+
+  it('should return random value between 2 numbers and multiplied by multiplicator', function() {
+    var ok = true;
+    for (var i = 0; i < 1000; i++) {
+      var value = rv.random(1, 3, 1000);
+      if (!(value >= 1000 && value <= 3000)) {
+        ok = false;
+        break;
+      }
+    }
+
+    assert(ok, 'we expect to have 1, i value = ' + i);
+  });
 });
 
 describe('random-values.ratioArray()', function () {
@@ -50,7 +63,7 @@ describe('random-values.ratioArray()', function () {
 describe('random-values.byRatio()', function () {
   it('should return randomize rational values', function () {
     var value, i, man = 0, woman = 0,
-      iterations = 1000000;
+      iterations = 10000;
 
 
     for (i = 0; i < iterations; i++) {
@@ -78,7 +91,7 @@ describe('random-values.byRatio()', function () {
 
   it('should return randomize rational values with numbers', function () {
     var value, i,
-      iterations = 1000000, r,
+      iterations = 10000, r,
       results = [0, 0, 0, 0, 0];
 
     for (i = 0; i < iterations; i++) {
@@ -96,6 +109,6 @@ describe('random-values.byRatio()', function () {
       return item / iterations;
     });
 
-    assert(r[0] < 0.26 && r[1] < 0.31 && r[2] < 0.16 && r[3] < 0.11 && r[4] < 0.2, 'we expect to have number generated proportionnaly');
+    assert(r[0] < 0.265 && r[1] < 0.315 && r[2] < 0.165 && r[3] < 0.115 && r[4] < 0.215, 'we expect to have number generated proportionnaly [0.25,0.30,0.15,0.10,0.20], but we have ratios ' + r.join(','));
   });
 });
