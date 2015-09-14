@@ -35,11 +35,12 @@ describe('random-values.random()', function () {
     assert(ok, 'we expect to have 1, i value = ' + i);
   });
 
-  it('should return random value between 2 numbers and multiplied by multiplicator', function() {
+  it('should return random value between 2 numbers and multiplied by multiplicator', function () {
     var ok = true;
+    var testArray = [1000, 2000, 3000];
     for (var i = 0; i < 1000; i++) {
       var value = rv.random(1, 3, 1000);
-      if (!(value >= 1000 && value <= 3000)) {
+      if (testArray.indexOf(value) == -1) {
         ok = false;
         break;
       }
