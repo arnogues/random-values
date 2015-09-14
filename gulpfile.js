@@ -51,10 +51,9 @@ gulp.task('test', ['pre-test'], function (cb) {
 // Rerun the task when a file changes
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['default']);
-  gulp.watch(paths.test, ['default']);
 });
 
 
 gulp.task('prepublish', ['nsp']);
 gulp.task('default', ['static', 'test']);
-gulp.task('dev', ['static', 'test', 'watch']);
+gulp.task('dev', ['static', 'watch']);
