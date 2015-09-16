@@ -9,16 +9,14 @@ var plumber = require('gulp-plumber');
 var browserify = require('gulp-browserify');
 
 
-var production = process.argv.indexOf('build') !== -1;
-
 var paths = {
-  scripts: ['src/*.js', 'src/**/*.js'],
+  scripts: ['lib/*.js', 'lib/**/*.js'],
   test: ['test/*.js', 'test/**/*.js']
 };
 
 
 gulp.task('static', function () {
-  return gulp.src(['src/*.js', 'gulpfile.js'])
+  return gulp.src(['lib/*.js', 'gulpfile.js'])
     .pipe(excludeGitignore())
     .pipe(eslint())
     .pipe(eslint.format())
@@ -30,7 +28,7 @@ gulp.task('nsp', function (cb) {
 });
 
 gulp.task('pre-test', function () {
-  return gulp.src('src/**/*.js')
+  return gulp.src('lib/**/*.js')
     .pipe(istanbul({
       includeUntested: true
     }))
@@ -43,10 +41,7 @@ gulp.task('test', ['pre-test'], function (cb) {
   gulp.src('test/**/*.js')
     .pipe(plumber())
     .pipe(mocha({
-      reporter: 'spec',
-      globals: {
-        prod: production
-      }
+      reporter: 'spec'
     }))
     .on('error', function (err) {
       mochaErr = err;
@@ -57,17 +52,6 @@ gulp.task('test', ['pre-test'], function (cb) {
     });
 });
 
-gulp.task('browserify', function () {
-  // Single entry point to browserify
-  gulp.src('src/index.js')
-    .pipe(browserify({
-      insertGlobals: false,
-      debug: false,
-      ignore: ['node_modules']
-    }))
-    .pipe(gulp.dest('./lib/'));
-});
-
 // Rerun the task when a file changes
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['default']);
@@ -75,6 +59,5 @@ gulp.task('watch', function () {
 
 
 gulp.task('prepublish', ['nsp']);
-gulp.task('build', ['static', 'browserify', 'test']);
-gulp.task('default', ['static', 'browserify', 'test']);
+gulp.task('default', ['static', 'test']);
 gulp.task('dev', ['static', 'watch']);
