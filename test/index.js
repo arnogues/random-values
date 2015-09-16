@@ -1,7 +1,7 @@
 'use strict';
 
 var assert = require('assert');
-var rv = require('../lib');
+var rv = require('../src');
 
 describe('random-values.random()', function () {
   it('should return random value from an array with one cell', function () {

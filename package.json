@@ -30,8 +30,7 @@
     "gulp-istanbul": "^0.10.0",
     "gulp-mocha": "^2.1.3",
     "gulp-nsp": "^0.4.5",
-    "gulp-plumber": "^1.0.1",
-    "gulp-rename": "^1.2.2"
+    "gulp-plumber": "^1.0.1"
   },
   "scripts": {
     "prepublish": "gulp prepublish",
