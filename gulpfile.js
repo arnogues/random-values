@@ -6,6 +6,9 @@ var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
+var browserify = require('gulp-browserify');
+var rename = require("gulp-rename");
+
 
 var paths = {
   scripts: ['lib/*.js', 'lib/**/*.js'],
@@ -48,6 +51,17 @@ gulp.task('test', ['pre-test'], function (cb) {
     });
 });
 
+gulp.task('browserify', function() {
+  // Single entry point to browserify
+  gulp.src('lib/index.js')
+    .pipe(browserify({
+      insertGlobals : true,
+      debug:false
+    }))
+    .pipe(rename({basename:'random-values'}))
+    .pipe(gulp.dest('./browser/'))
+});
+
 // Rerun the task when a file changes
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['default']);
@@ -55,5 +69,5 @@ gulp.task('watch', function () {
 
 
 gulp.task('prepublish', ['nsp']);
-gulp.task('default', ['static', 'test']);
+gulp.task('default', ['static', 'test', 'browserify']);
 gulp.task('dev', ['static', 'watch']);
