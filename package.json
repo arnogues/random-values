@@ -1,6 +1,6 @@
 {
   "name": "random-values",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Generate random data from array and manager random data by ratios",
   "homepage": "https://github.com/arnogues/random-values",
   "repository": {
