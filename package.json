@@ -24,7 +24,6 @@
   ],
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-browserify": "^0.5.1",
     "gulp-eslint": "^1.0.0",
     "gulp-exclude-gitignore": "^1.0.0",
     "gulp-istanbul": "^0.10.0",

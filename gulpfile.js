@@ -6,7 +6,6 @@ var mocha = require('gulp-mocha');
 var istanbul = require('gulp-istanbul');
 var nsp = require('gulp-nsp');
 var plumber = require('gulp-plumber');
-var browserify = require('gulp-browserify');
 
 
 var paths = {
