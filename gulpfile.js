@@ -22,8 +22,11 @@ gulp.task('static', function () {
     .pipe(eslint.failAfterError());
 });
 
+/**
+ * Run Gulp Security check module
+ */
 gulp.task('nsp', function (cb) {
-  nsp('package.json', cb);
+  nsp({package: __dirname + '/package.json'}, cb);
 });
 
 gulp.task('pre-test', function () {
