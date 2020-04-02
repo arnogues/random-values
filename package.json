@@ -23,17 +23,11 @@
     "datas"
   ],
   "devDependencies": {
-    "gulp": "^3.9.0",
-    "gulp-eslint": "^3.0.1",
-    "gulp-exclude-gitignore": "^1.0.0",
-    "gulp-istanbul": "^1.0.0",
-    "gulp-mocha": "^3.0.0",
-    "gulp-nsp": "^2.4.2",
-    "gulp-plumber": "^1.0.1"
+    "jest": "^25.2.6"
   },
   "scripts": {
-    "prepublish": "gulp prepublish",
-    "test": "gulp test"
+    "test": "jest --watch",
+    "coverage": "jest --coverage"
   },
   "license": "MIT"
 }
